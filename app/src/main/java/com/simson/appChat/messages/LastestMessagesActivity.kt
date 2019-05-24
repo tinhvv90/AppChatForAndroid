@@ -1,4 +1,4 @@
-package com.simson.appChat
+package com.simson.appChat.messages
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import com.google.firebase.auth.FirebaseAuth
+import com.simson.appChat.R
+import com.simson.appChat.registerlogin.RegisterActivity
 
 class LastestMessagesActivity : AppCompatActivity() {
 

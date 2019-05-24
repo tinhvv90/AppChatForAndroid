@@ -1,8 +1,7 @@
-package com.simson.appChat
+package com.simson.appChat.registerlogin
 
 import android.app.Activity
 import android.content.Intent
-import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -12,6 +11,9 @@ import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
+import com.simson.appChat.messages.LastestMessagesActivity
+import com.simson.appChat.R
+import com.simson.appChat.models.User
 import kotlinx.android.synthetic.main.activity_register.*
 import java.util.*
 
@@ -111,7 +113,11 @@ class RegisterActivity : AppCompatActivity() {
     private fun saveUserToFilebaseDatabase(profileImageUrl: String) {
         val uid = FirebaseAuth.getInstance().uid ?: ""
         val ref = FirebaseDatabase.getInstance().getReference("/users/$uid")
-        val user = User(email_edittext_register.text.toString(), username_edittext_register.text.toString(), profileImageUrl)
+        val user = User(
+            email_edittext_register.text.toString(),
+            username_edittext_register.text.toString(),
+            profileImageUrl
+        )
         ref.setValue(user)
             .addOnSuccessListener {
                 Log.d(TAG, "Finally we saved  the user to Firebase Database")
@@ -121,8 +127,4 @@ class RegisterActivity : AppCompatActivity() {
                 startActivity(intent)
             }
     }
-}
-
-class  User(val email: String, val name: String, val profileImageUrl: String) {
-    constructor() : this("","","")
 }
