@@ -1,5 +1,6 @@
 package com.simson.appChat.messages
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -19,6 +20,10 @@ import kotlinx.android.synthetic.main.user_row_new_message.view.*
 
 
 class NewMessageActivity : AppCompatActivity() {
+
+    companion object {
+        val USER_KEY = "USER_KEY"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +50,15 @@ class NewMessageActivity : AppCompatActivity() {
                     if (user != null) {
                         adapter.add(UserItem(user))
                     }
+                }
+
+                adapter.setOnItemClickListener { item, view ->
+
+                    val userItem = item as UserItem
+                    val intent = Intent(view.context, ChatLogActivity::class.java)
+                    intent.putExtra(USER_KEY ,item.user)
+                    startActivity(intent)
+                    finish()
                 }
 
                 recycleview_newmessage.adapter = adapter
