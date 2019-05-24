@@ -125,6 +125,7 @@ class ChatFromItem(val text: String, val user: User): Item<ViewHolder>() {
         viewHolder.itemView.textView_from_row.text = text
         val uri = user.profileImageUrl
         val targetImageView = viewHolder.itemView.imageView_chat_from_row
+        if (targetImageView != null) return
         Picasso.get().load(uri).into(targetImageView)
     }
 
@@ -139,6 +140,7 @@ class ChatToItem(val text: String, val user: User): Item<ViewHolder>() {
         viewHolder.itemView.textView_to_row.text = text
         val uri = user.profileImageUrl
         val targetImageView = viewHolder.itemView.imageView_chat_to_row
+        if (targetImageView != null) return
         Picasso.get().load(uri).into(targetImageView)
     }
 

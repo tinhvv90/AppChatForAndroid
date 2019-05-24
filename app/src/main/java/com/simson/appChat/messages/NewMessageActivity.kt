@@ -57,7 +57,7 @@ class NewMessageActivity : AppCompatActivity() {
 
                     val userItem = item as UserItem
                     val intent = Intent(view.context, ChatLogActivity::class.java)
-                    intent.putExtra(USER_KEY ,item.user)
+                    intent.putExtra(USER_KEY ,userItem.user)
                     startActivity(intent)
                     finish()
                 }
